@@ -1,0 +1,7 @@
+{
+  "extends": ["eslint-config-umi", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "max-len": ["error", { "code": 120 }]
+  }
+}
