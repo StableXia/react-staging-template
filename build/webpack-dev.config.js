@@ -1,34 +1,17 @@
-// const path = require('path')
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const webpack = require('webpack')
-const portfinder = require('portfinder')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const { openBrowser } = require('./utils/open-browser.util')
+const dev = require('./min-webpack/dev')
 
 const devWebpackConfig = {
   mode: 'development',
   entry: {
-    app: './src/index.tsx'
+    app: path.resolve(__dirname, '../src/index.tsx')
   },
   // output: {
   //   filename: '[name].[hash:8].js',
   //   path: path.resolve(__dirname, '../dist')
   // },
-  devServer: {
-    // contentBase: path.resolve(__dirname, '../dist'),
-    compress: true,
-    // hotOnly: false,
-    hot: true,
-    port: 8002,
-    host: '0.0.0.0',
-    inline: true,
-    open: false
-    // disableHostCheck: true
-    // overlay: {
-    //   warnings: true,
-    //   errors: true
-    // }
-  },
+  stats: 'errors-only',
   module: {
     rules: [
       {
@@ -74,29 +57,7 @@ const devWebpackConfig = {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     })
-    // new webpack.HotModuleReplacementPlugin()
   ]
 }
 
-module.exports = new Promise((resolve, reject) => {
-  portfinder.basePort = 8002
-  portfinder.getPort((err, port) => {
-    if (err) {
-      reject(err)
-    } else {
-      devWebpackConfig.devServer.port = port
-      devWebpackConfig.devServer.after = () => openBrowser(`http://localhost:${port}`)
-
-      devWebpackConfig.plugins.push(
-        new FriendlyErrorsPlugin({
-          compilationSuccessInfo: {
-            messages: [`Your application is running here: http://localhost:${port}`]
-          },
-          onErrors: undefined
-        })
-      )
-
-      resolve(devWebpackConfig)
-    }
-  })
-})
+dev({ webpackConfig: devWebpackConfig })
