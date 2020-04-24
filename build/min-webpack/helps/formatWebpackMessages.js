@@ -12,9 +12,7 @@ function isLikelyASyntaxError(message) {
   return message.indexOf(friendlySyntaxErrorLabel) !== -1
 }
 
-// Cleans up webpack error messages.
-// eslint-disable-next-line no-unused-vars
-function formatMessage(message, isError) {
+function formatMessage(message) {
   var lines = message.split('\n')
 
   if (lines.length > 2 && lines[1] === '') {
@@ -65,7 +63,6 @@ function formatMessage(message, isError) {
   }
 
   // Clean up export errors.
-  // TODO: we should really send a PR to Webpack for this.
   var exportError = /\s*(.+?)\s*(")?export '(.+?)' was not found in '(.+?)'/
   if (lines[1].match(exportError)) {
     lines[1] = lines[1].replace(exportError, "$1 '$4' does not contain an export named '$3'.")
@@ -85,20 +82,19 @@ function formatMessage(message, isError) {
 }
 
 function formatWebpackMessages(json) {
-  var formattedErrors = json.errors.map(function(message) {
-    return formatMessage(message, true)
+  const formattedErrors = json.errors.map(function(message) {
+    return formatMessage(message)
   })
-  var formattedWarnings = json.warnings.map(function(message) {
-    return formatMessage(message, false)
+  const formattedWarnings = json.warnings.map(function(message) {
+    return formatMessage(message)
   })
-  var result = {
+  const result = {
     errors: formattedErrors,
     warnings: formattedWarnings
   }
+
+  // 判断是否有语法错误
   if (result.errors.some(isLikelyASyntaxError)) {
-    // If there are any syntax errors, show just them.
-    // This prevents a confusing ESLint parsing error
-    // preceding a much more useful Babel syntax error.
     result.errors = result.errors.filter(isLikelyASyntaxError)
   }
   return result

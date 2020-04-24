@@ -27,8 +27,8 @@ module.exports = function(defaultPort) {
 
       const message =
         process.platform !== 'win32' && defaultPort < 1024 && !isRoot()
-          ? `Admin permissions are required to run a server on a port below 1024.`
-          : `Something is already running on port ${defaultPort}.`
+          ? `需要管理员权限才能在低于1024的端口上运行服务器`
+          : `已经有服务运行在此端口：${defaultPort}.`
 
       if (isInteractive) {
         clearConsole()
@@ -38,7 +38,7 @@ module.exports = function(defaultPort) {
           name: 'shouldChangePort',
           message: `${chalk.yellow(
             `message${existingProcess ? ` Probably:\n  ${existingProcess}` : ''}`
-          )}\n\nWould you like to run the app on another port instead?`,
+          )}\n\n是否要切换其他端口？`,
           default: true
         }
         return await inquirer.prompt(question).then(answer => {

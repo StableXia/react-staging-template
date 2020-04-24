@@ -11,7 +11,7 @@ const webpackConfig = {
   //   filename: '[name].[hash:8].js',
   //   path: path.resolve(__dirname, '../dist')
   // },
-  stats: 'errors-only',
+  // stats: 'errors-only',
   module: {
     rules: [
       {
