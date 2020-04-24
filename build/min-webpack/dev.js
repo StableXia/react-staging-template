@@ -22,7 +22,7 @@ const isInteractive = process.stdout.isTTY
 
 const T = () => {}
 
-module.exports = function(props) {
+module.exports = function(opts = {}) {
   const {
     webpackConfig,
     onCompileDone = T,
@@ -35,7 +35,7 @@ module.exports = function(props) {
     historyApiFallback = {
       disableDotRule: true
     }
-  } = props || {}
+  } = opts || {}
 
   if (!webpackConfig) {
     throw new Error('必须提供 webpackConfig 配置项')

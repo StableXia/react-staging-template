@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const dev = require('./min-webpack/dev')
 
-const devWebpackConfig = {
+const webpackConfig = {
   mode: 'development',
   entry: {
     app: path.resolve(__dirname, '../src/index.tsx')
@@ -60,4 +60,4 @@ const devWebpackConfig = {
   ]
 }
 
-dev({ webpackConfig: devWebpackConfig })
+dev({ webpackConfig })

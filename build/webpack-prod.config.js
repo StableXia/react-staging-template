@@ -1,7 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const build = require('./min-webpack/build')
 
-module.exports = {
+const webpackConfig = {
   mode: 'production',
   entry: {
     app: './src/index.tsx'
@@ -57,3 +58,5 @@ module.exports = {
     })
   ]
 }
+
+build({ webpackConfig })
