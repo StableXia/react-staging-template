@@ -1,4 +1,5 @@
 const path = require('path')
+// const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const dev = require('./min-webpack/dev')
 
@@ -16,7 +17,7 @@ const webpackConfig = {
     rules: [
       {
         test: /\.(js|jsx|ts|tsx)$/,
-        exclude: /node_modules/,
+        include: [path.resolve(__dirname, '../src')],
         use: ['babel-loader']
       },
       {
@@ -52,6 +53,10 @@ const webpackConfig = {
         ]
       }
     ]
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx'],
+    modules: [path.resolve(__dirname, '../node_modules'), 'node_modules']
   },
   plugins: [
     new HtmlWebpackPlugin({
