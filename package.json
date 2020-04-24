@@ -30,7 +30,7 @@
     }
   },
   "lint-staged": {
-    "*.js": "eslint --max-warnings=0"
+    "*.js": "eslint --max-warnings=0 --ignore-pattern !.minrc.js"
   },
   "commitlint": {
     "extends": [
