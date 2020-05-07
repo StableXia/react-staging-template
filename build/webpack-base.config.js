@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, '../src/index.tsx')
+    app: './src/index.tsx'
   },
   // output: {
   //   filename: '[name].[hash:8].js',
@@ -13,7 +13,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|ts|tsx)$/,
+        test: /\.(ts|tsx)$/,
         include: [path.resolve(__dirname, '../src')],
         use: ['babel-loader']
       },
