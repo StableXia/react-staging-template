@@ -3,6 +3,7 @@ const chalk = require('chalk')
 const rimraf = require('rimraf')
 const formatWebpackMessages = require('./helps/formatWebpackMessages')
 
+// process.env.DEBUG = 'min-webpack:build'
 const debug = require('debug')('min-webpack:build')
 
 function buildWebpack(opts = {}) {
