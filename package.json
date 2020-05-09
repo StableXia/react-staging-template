@@ -30,7 +30,7 @@
     }
   },
   "lint-staged": {
-    "*.js": "eslint --max-warnings=0 --ignore-pattern !.minrc.js"
+    "*.{js, jsx}": "eslint --max-warnings=0 --ignore-pattern !.minrc.js"
   },
   "commitlint": {
     "extends": [
@@ -57,7 +57,7 @@
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^2.7.0",
-    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
     "html-webpack-plugin": "^4.2.0",
     "husky": "^1.2.0",
@@ -78,6 +78,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@types/react-dom": "^16.9.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2"
