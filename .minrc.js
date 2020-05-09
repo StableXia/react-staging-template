@@ -1,5 +1,5 @@
-export default {
-  publicPath: '',
+module.exports = {
+  publicPath: '/',
   devServer: {
     open: true
   }

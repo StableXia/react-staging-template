@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-node ./build/webpack-dev.config.js
+# CLEAR_CONSOLE=none node ./build/webpack-dev.config.js 
+node ./build/webpack-dev.config.js 

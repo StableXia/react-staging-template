@@ -13,6 +13,7 @@ const chalk = require('chalk')
 const { send, STARTING, COMPILING, DONE } = require('./helps/send')
 const { createCompiler, prepareUrls } = require('./helps/webpackDevServer')
 const clearConsole = require('./helps/clearConsole')
+const { getConfig } = require('./helps/getConfig')
 
 // port 1024 => 65535
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 8000
@@ -20,6 +21,7 @@ const HOST = process.env.HOST || '0.0.0.0'
 const PROTOCOL = process.env.HTTPS ? 'https' : 'http'
 const isInteractive = process.stdout.isTTY
 
+const userConfig = getConfig()
 const T = () => {}
 
 module.exports = function(opts = {}) {
@@ -109,7 +111,9 @@ module.exports = function(opts = {}) {
           clearConsole()
         }
         console.log(chalk.cyan('\nStarting the development server...\n'))
-        openBrowser(urls.localUrlForBrowser)
+        if (userConfig.devServer.open) {
+          openBrowser(urls.localUrlForBrowser)
+        }
         send({ type: STARTING })
         if (afterServer) {
           afterServer(devServer)
