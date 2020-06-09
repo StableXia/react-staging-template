@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const chalk = require('chalk')
 const rimraf = require('rimraf')
-const formatWebpackMessages = require('./helps/formatWebpackMessages')
+const formatWebpackMessages = require('./helpers/formatWebpackMessages')
 
 // process.env.DEBUG = 'min-webpack:build'
 const debug = require('debug')('min-webpack:build')
@@ -24,7 +24,6 @@ function buildWebpack(opts = {}) {
 
     console.log('File sizes after gzip:\n')
     // TODO: 打印构建文件信息
-    // console.log(stats)
 
     if (success) {
       success({ stats, warnings })

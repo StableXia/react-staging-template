@@ -1,12 +1,12 @@
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
-const openBrowser = require('./helps/openBrowser')
-const choosePort = require('./helps/choosePort')
+const openBrowser = require('./helpers/openBrowser')
+const choosePort = require('./helpers/choosePort')
 const chalk = require('chalk')
-const { send, STARTING, COMPILING, DONE } = require('./helps/send')
-const { createCompiler, prepareUrls } = require('./helps/webpackDevServer')
-const clearConsole = require('./helps/clearConsole')
-const { getConfig } = require('./helps/getConfig')
+const { send, STARTING, COMPILING, DONE } = require('./helpers/send')
+const { createCompiler, prepareUrls } = require('./helpers/webpackDevServer')
+const clearConsole = require('./helpers/clearConsole')
+const { getConfig } = require('./helpers/getConfig')
 
 // port 1024 => 65535
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 8000
