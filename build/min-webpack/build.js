@@ -35,20 +35,30 @@ function buildWebpack(opts = {}) {
     // TODO: 打印构建失败信息
     console.log(err)
     debug(err)
-    if (fail) fail(err)
-    if (!watch) process.exit(1)
+
+    if (fail) {
+      fail(err)
+    }
+
+    if (!watch) {
+      process.exit(1)
+    }
   }
 
   function doneHandler(err, stats) {
     debug('build done')
+
     if (err) {
       return errorHandler(err)
     }
+
     const messages = formatWebpackMessages(stats.toJson({}, true))
+
     if (messages.errors.length) {
       if (messages.errors.length > 1) {
         messages.errors.length = 1
       }
+
       return errorHandler(new Error(messages.errors.join('\n\n')))
     }
 
@@ -59,6 +69,7 @@ function buildWebpack(opts = {}) {
   }
 
   const compiler = webpack(webpackConfig)
+
   if (watch) {
     compiler.watch(200, doneHandler)
   } else {

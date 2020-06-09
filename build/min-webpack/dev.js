@@ -44,21 +44,24 @@ module.exports = function(opts = {}) {
 
       const urls = prepareUrls(PROTOCOL, HOST, port)
       const compiler = createCompiler(webpack, webpackConfig, 'Your App', urls)
-
       const timefix = 11000
+
       compiler.plugin('watch-run', (watching, callback) => {
         watching.startTime += timefix
         callback()
       })
+
       compiler.plugin('done', stats => {
         send({ type: DONE })
         stats.startTime -= timefix
         onCompileDone()
       })
+
       compiler.plugin('invalid', () => {
         send({ type: COMPILING })
         onCompileInvalid()
       })
+
       const serverConfig = {
         disableHostCheck: true,
         compress: true,
@@ -100,14 +103,19 @@ module.exports = function(opts = {}) {
           console.log(err)
           return
         }
+
         if (isInteractive) {
           clearConsole()
         }
+
         console.log(chalk.cyan('\nStarting the development server...\n'))
+
         if (userConfig.devServer.open) {
           openBrowser(urls.localUrlForBrowser)
         }
+
         send({ type: STARTING })
+
         if (afterServer) {
           afterServer(devServer)
         }
