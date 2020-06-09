@@ -1,10 +1,3 @@
-/***
- * @Author:xiawen
- * @Date:2020-04-24 11:03:13
- * @LastModifiedBy:xiawen
- * @Last Modified time:2020-04-24 13:25:21
- */
-
 const detect = require('detect-port')
 const inquirer = require('inquirer')
 const isRoot = require('is-root')

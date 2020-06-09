@@ -1,10 +1,3 @@
-/***
- * @Author:xiawen
- * @Date:2020-04-24 11:04:48
- * @LastModifiedBy:xiawen
- * @Last Modified time:2020-04-24 11:04:48
- */
-
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const openBrowser = require('./helps/openBrowser')

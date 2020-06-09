@@ -1,10 +1,3 @@
-/***
- * @Author:xiawen
- * @Date:2020-04-24 13:52:21
- * @LastModifiedBy:xiawen
- * @Last Modified time:2020-04-24 13:52:21
- */
-
 const address = require('address')
 const url = require('url')
 const chalk = require('chalk')

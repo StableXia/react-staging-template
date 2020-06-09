@@ -1,10 +1,3 @@
-/***
- * @Author:xiawen
- * @Date:2020-04-24 11:03:10
- * @LastModifiedBy:xiawen
- * @Last Modified time:2020-04-24 11:03:10
- */
-
 var chalk = require('chalk')
 var execSync = require('child_process').execSync
 var spawn = require('cross-spawn')

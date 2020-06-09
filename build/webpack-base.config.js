@@ -5,11 +5,6 @@ module.exports = {
   entry: {
     app: './src/index.tsx'
   },
-  // output: {
-  //   filename: '[name].[hash:8].js',
-  //   path: path.resolve(__dirname, '../dist')
-  // },
-  // stats: 'errors-only',
   module: {
     rules: [
       {
@@ -25,13 +20,13 @@ module.exports = {
         test: /\.less$/,
         use: [
           {
-            loader: 'style-loader' // creates style nodes from JS strings
+            loader: 'style-loader'
           },
           {
-            loader: 'css-loader' // translates CSS into CommonJS
+            loader: 'css-loader'
           },
           {
-            loader: 'less-loader' // compiles Less to CSS
+            loader: 'less-loader'
           }
         ]
       },
@@ -53,7 +48,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
-    modules: [path.resolve(__dirname, '../node_modules'), 'node_modules']
+    modules: [path.resolve(__dirname, '../node_modules')]
   },
   plugins: [
     new HtmlWebpackPlugin({

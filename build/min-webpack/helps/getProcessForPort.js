@@ -1,10 +1,3 @@
-/***
- * @Author:xiawen
- * @Date:2020-04-24 13:18:38
- * @LastModifiedBy:xiawen
- * @Last Modified time:2020-04-24 13:18:38
- */
-
 const chalk = require('chalk')
 const execSync = require('child_process').execSync
 const path = require('path')

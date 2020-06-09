@@ -1,10 +1,3 @@
-/***
- * @Author:xiawen
- * @Date:2020-04-24 14:17:16
- * @LastModifiedBy:xiawen
- * @Last Modified time:2020-04-24 14:17:16
- */
-
 const chalk = require('chalk')
 const friendlySyntaxErrorLabel = 'Syntax error:'
 
